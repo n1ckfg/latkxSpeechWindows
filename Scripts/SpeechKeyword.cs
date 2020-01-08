@@ -16,6 +16,7 @@ public class SpeechKeyword : MonoBehaviour {
     public ConfidenceLevel confidenceLevel = ConfidenceLevel.MEDIUM;
     public AudioSource sound;
     public bool setupKeywordsOnStart = false;
+    public LightningArtist latk;
 
     [HideInInspector] public Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
@@ -40,8 +41,9 @@ public class SpeechKeyword : MonoBehaviour {
     public void setupKeywords() {
         keywords.Clear();
 
-        keywords.Add("red", () => { // Create keyword for keyword recognizer
+        keywords.Add("save", () => { // Create keyword for keyword recognizer
             // action to be performed when this keyword is spoken
+            if (!latk.isWritingFile) latk.armWriteFile = true;
         });
 
         init();
