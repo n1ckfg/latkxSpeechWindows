@@ -46,6 +46,11 @@ public class SpeechKeyword : MonoBehaviour {
             if (!latk.isWritingFile) latk.armWriteFile = true;
         });
 
+        keywords.Add("undo", () => { // Create keyword for keyword recognizer
+            // action to be performed when this keyword is spoken
+            latk.inputEraseLastStroke();
+        });
+
         init();
     }
 
